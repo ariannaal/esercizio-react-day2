@@ -4,13 +4,13 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+
 
 const MyNav = () => (
 
 <Navbar collapseOnSelect expand="lg" className="bg-dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="#home">My Library</Navbar.Brand>
+        <Navbar.Brand href="#home">Starlight  Library</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
