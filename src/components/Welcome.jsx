@@ -7,7 +7,7 @@ const Welcome = () => (
         <Alert className='mt-4'>
             New books on Sale - Make sure to check them out!
         </Alert>
-        <h2>
+        <h2 className='mb-4'>
            Where stories illuminate the night
         </h2>
     </>

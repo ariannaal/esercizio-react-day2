@@ -8,14 +8,14 @@ const MyFooter = () => (
     <footer>
         <Container className='p-4' >
             <Row >
-                <Col lg={6} md={12} className="mb-4 mb-md-0" >
+                <Col lg={6} md={6} className="mb-4 mt-4" >
                     <h5 >Starlight Library</h5>
             <p>
              "Starlight Library" is a magical haven where books shimmer with celestial light and ancient knowledge sparkles in the air. It's a tranquil sanctuary for seekers of wisdom, where every book holds a piece of the stars.
             </p>
                 </Col>
 
-                 <Col lg={3} md={6} className="mb-4 mb-md-0">
+                 <Col lg={6} md={6} className="mb-4 mt-4">
             <h5>CONTACT</h5>
             <ul className="list-unstyled mb-0">
               <li>
