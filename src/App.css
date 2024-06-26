@@ -38,6 +38,14 @@
   object-fit: cover;
 }
 
+.alert {
+  margin-top: 5rem;
+}
+
+.cardBook:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
 
 
 @keyframes App-logo-spin {

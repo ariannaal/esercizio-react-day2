@@ -4,10 +4,10 @@ import Alert from 'react-bootstrap/Alert';
 
 const Welcome = () => (
     <>
-        <Alert className='mt-4'>
+        <Alert className='alert'>
             New books on Sale - Make sure to check them out!
         </Alert>
-        <h2 className='mb-4'>
+        <h2 className='m-4'>
            Where stories illuminate the night
         </h2>
     </>
