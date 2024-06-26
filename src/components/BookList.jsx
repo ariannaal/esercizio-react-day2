@@ -4,64 +4,44 @@
 
 import React from 'react';
 import SingleBook from './SingleBook';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import {  Row, Col, Form } from 'react-bootstrap';
 import { Component } from 'react';
 
 
-class FormComponent extends Component {
-
-
+class BookList extends Component {
   state = {
-    formValue: {
-      bookTitle: ''
-    }
-    };
-    
-  
+    searchBook: '',
+  }
 
   render() {
-
-      
     return (
-      <div>
-        <Form className='formInput mx-auto'>
-          <Form.Group className="mb-3" controlId="formText">
+      <>
+        <Row className="justify-content-center mt-5">
+          <Col xs={12} md={6} lg={3} className="text-center">
+            <Form.Group>
               <Form.Control
-                type="text"
+                type="search"
                 placeholder="Looking for something?"
-                value={this.state.formValue.bookTitle}
-                        onChange={(e) => {
-                            this.setState({
-                                formValue: {
-                                    ...this.state.formValue, // copia dello stato
-                                    bookTitle: e.target.value,
-                        },
-                    })
-                }}
+                value={this.state.searchBook}
+                onChange={(e) => this.setState({searchBook: e.target.value })}
               />
-            
-                </Form.Group>
-        </Form>
-      </div>
-    );
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row className="g-2 mt-3">
+          {this.props.books
+            .filter((libro) => // filtro l'array books
+              libro.title.toLowerCase().includes(this.state.searchBook)
+            )
+            .map((libro) => ( // itero su ogni elemento filtrato generando un col per ciascun libro
+              <Col xs={12} md={4} key={libro.asin} className='d-flex justify-content-center'>
+                <SingleBook book={libro} />
+              </Col>
+            ))}
+        </Row>
+      </>
+    )
   }
 }
-
-const BookList = ({ books }) => { // riceve un array come prop
-
-    
-  return (
-    <Container>
-      <FormComponent /> 
-      <Row sm={1} md={2} lg={3} className="g-4 my-3 justify-content-center">
-        {books.map((book, idx) => (
-          <Col key={idx} className='cardBook d-flex justify-content-center'>
-            <SingleBook book={book} />
-          </Col>
-        ))}
-      </Row>
-    </Container>
-  );
-};
 
 export default BookList;
