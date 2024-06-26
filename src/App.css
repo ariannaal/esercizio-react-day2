@@ -47,6 +47,10 @@
   transform: scale(1.05);
 }
 
+.formInput {
+  width: 500px;
+}
+
 
 @keyframes App-logo-spin {
   from {
