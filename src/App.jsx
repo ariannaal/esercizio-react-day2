@@ -5,6 +5,7 @@ import MyNav from './components/MyNav';
 import MyFooter from './components/MyFooter';
 import Welcome from './components/Welcome'
 import AllTheBooks from './components/AllTheBooks';
+import SingleBook from './components/SingleBook';
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
      <MyNav />
       <div className='container'>
         <Welcome/>
-        <AllTheBooks/>
+        {/* <AllTheBooks/> */}
+        {/* <SingleBook/> */}
+        <SingleBook/>
       </div>
       <MyFooter className="footer" />
     </div>
