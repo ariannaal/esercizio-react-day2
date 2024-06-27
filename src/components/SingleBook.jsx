@@ -23,11 +23,10 @@ class SingleBook extends Component {
 
   render() {
     const { book } = this.props;
-    const { isSelected } = this.state;
 
     return (
       <>
-        <Card style={{ width: '18rem' }} className="h-100" onClick={this.handleClick}>
+        <Card style={{ width: '18rem' }} className="h-100" onClick={this.handleClick} key={book.asin}>
           <Card.Img variant="top" src={book.img} className="cardImage" />
           <Card.Body>
             <Card.Title>{book.title}</Card.Title>
@@ -35,7 +34,7 @@ class SingleBook extends Component {
           </Card.Body>
           
         </Card>
-        {isSelected && <CommentArea bookId={book.asin} />} 
+        {this.state.isSelected && <CommentArea bookId={book.asin}/>} 
       </>
     );
   }

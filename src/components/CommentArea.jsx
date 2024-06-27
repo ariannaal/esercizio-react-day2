@@ -7,7 +7,7 @@ import CommentList from './CommentList';
 
 class CommentArea extends Component {
     state = {
-        stateRatings: [],
+        commenti: []
     };
 
     fetchComments = () => {
@@ -38,32 +38,16 @@ class CommentArea extends Component {
     render() {
         return (
             <>
-                <CommentList arrayCommenti={this.state.stateRatings} />
+                <div>
+                    <h4>Recensioni</h4>
+                  <CommentList arrayCommenti={this.state.commenti} />
+                </div>
             </>
         );
     }
 }
 
 
-        {/* <SingLeComment bookId={this.props.bookId} /> */}
-      
-    //   <ListGroup as="ol" numbered>
-    //     {stateRatings.map((rating) => (
-    //       <ListGroup.Item
-    //         key={rating._id}
-    //         as="li"
-    //         className=" align-items-start"
-    //       >
-    //         <div className="ms-2 me-auto">
-    //           <div className="fw-bold">{rating.author}</div>
-    //           {rating.comment}
-    //         </div>
-    //         <Badge bg="primary" pill>
-    //           {rating.rate}
-    //         </Badge>
-    //       </ListGroup.Item>
-    //     ))}
-    //   </ListGroup>
   
 
 export default CommentArea;
