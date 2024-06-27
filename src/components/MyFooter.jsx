@@ -7,25 +7,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const MyFooter = () => (
     <footer>
         <Container className='p-4' >
-            <Row >
-                <Col lg={6} md={6} className="mb-4 mt-4" >
+            <Row>
+                <Col sm={9}  className="mb-4 mt-4" >
                     <h5 >Starlight Library</h5>
             <p>
-             "Starlight Library" is a magical haven where books shimmer with celestial light and ancient knowledge sparkles in the air. It's a tranquil sanctuary for seekers of wisdom, where every book holds a piece of the stars.
+             "Starlight Library" is a magical haeven where books shimmer with celestial light and ancient knowledge sparkles in the air. It's a tranquil sanctuary for seekers of wisdom, where every book holds a piece of the stars.
             </p>
                 </Col>
 
-                 <Col lg={6} md={6} className="mb-4 mt-4">
+                 <Col sm={3} className="mb-4 mt-4">
             <h5>CONTACT</h5>
             <ul className="list-unstyled mb-0">
               <li>
-                <a href="#" className="text-dark">Email</a>
+                <a href="#x" className="text-dark">Email</a>
               </li>
               <li>
-                <a href="#" className="text-dark">Phone</a>
+                <a href="#x" className="text-dark">Phone</a>
               </li>
               <li>
-                <a href="#" className="text-dark">Address</a>
+                <a href="#x" className="text-dark">Address</a>
               </li>
             </ul>
           </Col>

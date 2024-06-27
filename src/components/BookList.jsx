@@ -6,6 +6,7 @@ import React from 'react';
 import SingleBook from './SingleBook';
 import {  Row, Col, Form } from 'react-bootstrap';
 import { Component } from 'react';
+// import CommentArea from './CommentArea';
 
 
 class BookList extends Component {
@@ -34,8 +35,9 @@ class BookList extends Component {
               libro.title.toLowerCase().includes(this.state.searchBook)
             )
             .map((libro) => ( // itero su ogni elemento filtrato generando un col per ciascun libro
-              <Col xs={12} md={4} key={libro.asin} className='d-flex justify-content-center'>
+              <Col xs={12} md={4} key={libro.asin} className='d-flex justify-content-center cardBook'>
                 <SingleBook book={libro} />
+                {/* <CommentArea/> */}
               </Col>
             ))}
         </Row>

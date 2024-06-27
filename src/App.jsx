@@ -17,7 +17,7 @@ function App() {
       <div className='container'>
         <Welcome/>
         {/* <AllTheBooks/> */}
-        {/* <SingleBook/> */}
+        {/* <SingleBook book={romance[0]/> */} 
         <BookList books={romance} /> 
       </div>
       <MyFooter className="footer" />
