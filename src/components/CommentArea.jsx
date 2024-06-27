@@ -39,7 +39,6 @@ class CommentArea extends Component {
         return (
             <>
                 <CommentList arrayCommenti={this.state.stateRatings} />
-                {/* <AddComment /> */}
             </>
         );
     }

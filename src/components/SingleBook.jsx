@@ -33,8 +33,9 @@ class SingleBook extends Component {
             <Card.Title>{book.title}</Card.Title>
             <Button variant="info">Add to Cart</Button>
           </Card.Body>
+          
         </Card>
-        {isSelected && <CommentArea  bookId={book.asin} />} 
+        {isSelected && <CommentArea bookId={book.asin} />} 
       </>
     );
   }
