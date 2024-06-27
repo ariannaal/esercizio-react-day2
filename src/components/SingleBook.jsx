@@ -4,6 +4,7 @@
 import { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
 import CommentArea from './CommentArea';
 // import romance from "../data/romance.json";
 
@@ -31,10 +32,13 @@ class SingleBook extends Component {
           <Card.Body>
             <Card.Title>{book.title}</Card.Title>
             <Button variant="info">Add to Cart</Button>
+            {this.state.isSelected && <CommentArea bookId={book.asin} />}
           </Card.Body>
+        
           
         </Card>
-        {this.state.isSelected && <CommentArea bookId={book.asin}/>} 
+        
+          
       </>
     );
   }

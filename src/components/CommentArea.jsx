@@ -35,18 +35,19 @@ class CommentArea extends Component {
         this.fetchComments();
     }
 
-    render() {
-        return (
-            <>
-                <div>
-                    <h4>Recensioni</h4>
-                  <CommentList arrayCommenti={this.state.commenti} />
-                </div>
-            </>
-        );
-    }
+   render() {
+    return (
+      <>
+        <h5 className='mt-3 mb-2'>Recensioni:</h5>
+        {this.state.commenti.length === 0 ? ( // se array è vuoto
+          <p>Nessuna recensione disponibile.</p>
+        ) : (
+          <CommentList arrayCommenti={this.state.commenti} />
+        )}
+      </>
+    );
+  }
 }
-
 
   
 

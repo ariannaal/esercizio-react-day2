@@ -42,9 +42,8 @@
   margin-top: 5rem;
 }
 
-.cardBook:hover {
+.cardBook {
   cursor: pointer;
-  transform: scale(1.05);
 }
 
 .formInput {
