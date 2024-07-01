@@ -2,7 +2,8 @@
 
 import React, { Component } from 'react';
 import CommentList from './CommentList';
-import AddComment from './AddComment';
+import AddComment from './AddComment'; 
+import { Alert } from 'react-bootstrap';
 
 class CommentArea extends Component {
   state = {
@@ -33,10 +34,15 @@ class CommentArea extends Component {
   };
 
   render() {
+    const { comments } = this.state;
     return (
       <div className="text-center">
         <AddComment asin={this.props.asin} />
-        <CommentList commentsToShow={this.state.comments} />
+        {comments.length === 0 ? (
+          <Alert variant="warning">No reviews</Alert>
+        ) : (
+          <CommentList commentsToShow={comments} />
+        )}
       </div>
     );
   }

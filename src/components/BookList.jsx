@@ -23,10 +23,7 @@ class BookList extends Component {
     return (
       <>
         <Row>
-          <Col md={8}>
-            <Row className="justify-content-center mt-5">
-              <Col xs={12} md={4} className="text-center">
-                <Form.Group>
+           <Form.Group>
                   <Form.Control
                     type="search"
                     placeholder="Cerca un libro"
@@ -36,15 +33,14 @@ class BookList extends Component {
                     }
                   />
                 </Form.Group>
-              </Col>
-            </Row>
+          <Col xs={4}>
             <Row className="g-2 mt-3">
               {this.props.books
                 .filter((b) =>
                   b.title.toLowerCase().includes(this.state.searchQuery)
                 )
                 .map((b) => (
-                  <Col xs={12} md={4} key={b.asin}>
+                  <Col xs={6} style={{ cursor: 'pointer', width: '200px' }}  key={b.asin}>
                     <SingleBook
                       book={b}
                       selectedBook={this.state.selectedBook}
@@ -54,7 +50,7 @@ class BookList extends Component {
                 ))}
             </Row>
           </Col>
-          <Col md={4}>
+          <Col md={8}>
             <CommentArea asin={this.state.selectedBook} />
           </Col>
         </Row>

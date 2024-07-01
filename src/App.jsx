@@ -24,9 +24,6 @@ function App() {
         
               <BookList books={romance}  /> 
         
-        
-   
-        
       </div>
       <MyFooter className="footer" />
     </div>
