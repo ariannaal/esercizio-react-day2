@@ -8,6 +8,9 @@ import Welcome from './components/Welcome'
 // import SingleBook from './components/SingleBook';
 import BookList from './components/BookList'; 
 import romance from './data/romance.json';
+import AddComment from './components/AddComment';
+import { Col, Row } from 'react-bootstrap';
+import CommentArea from './components/CommentArea';
 
 
 function App() {
@@ -17,8 +20,13 @@ function App() {
       <div className='container'>
         <Welcome/>
         {/* <AllTheBooks/> */}
-        {/* <SingleBook book={romance[0]/> */} 
-        <BookList books={romance} /> 
+        {/* <SingleBook book={romance[0]/> */}
+        
+              <BookList books={romance}  /> 
+        
+        
+   
+        
       </div>
       <MyFooter className="footer" />
     </div>

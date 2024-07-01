@@ -7,28 +7,28 @@ import Col from 'react-bootstrap/Col';
 import romance from "../data/romance.json";
 
 const AllTheBooks = () => {
-    return (
-    <>
-        <Row sm={1} md={2} lg={3} xl={4} className="g-4 " >
-            {romance.map((book, idx) => (
-                <Col key={idx} >
-                    <Card style={{ width: '18rem' }} className="h-100">
-                        <Card.Img variant="top" src={book.img} className="cardImage" />
-                        <Card.Body >
-                            <Card.Title>{book.title}</Card.Title>
-                            <Button variant="primary">Add to Cart</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            ))}
-        </Row>
-        </>
-    )
+  return (
+    <Row className="g-2">
+      {romance.map((book) => {
+        return (
+          <Col xs={12} md={4} key={book.asin}>
+            <Card className="book-cover d-flex flex-column">
+              <Card.Img variant="top" src={book.img} />
+              <Card.Body>
+                <Card.Title>{book.title}</Card.Title>
+              </Card.Body>
+            </Card>
+          </Col>
+        )
+      })}
+    </Row>
+  )
 }
+
+export default AllTheBooks
+
  
 
 
 
 
-
-export default AllTheBooks;

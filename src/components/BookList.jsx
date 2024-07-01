@@ -2,47 +2,64 @@
 
  //Inserisci all'interno del componente BookList un campo di ricerca, prima della griglia di libri; se riempito, dovranno venire mostrati solamente i libri il cui titolo contiene il valore cercato (suggerimento: salva la stringa di ricerca dentro allo stato del componente BookList e filtra i libri di conseguenza).
 
-import React from 'react';
+import React, { Component } from 'react';
+import { Row, Col, Form } from 'react-bootstrap';
 import SingleBook from './SingleBook';
-import {  Row, Col, Form } from 'react-bootstrap';
-import { Component } from 'react';
-// import CommentArea from './CommentArea';
-
+import CommentArea from './CommentArea';
 
 class BookList extends Component {
   state = {
-    searchBook: '',
-  }
+    searchQuery: '',
+    selectedBook: null,
+  };
+
+  changeSelectedBook = (asin) => {
+    this.setState({
+      selectedBook: asin,
+    });
+  };
 
   render() {
     return (
       <>
-        <Row className="justify-content-center mt-5">
-          <Col xs={12} md={6} lg={3} className="text-center">
-            <Form.Group>
-              <Form.Control
-                type="search"
-                placeholder="Looking for something?"
-                value={this.state.searchBook}
-                onChange={(e) => this.setState({searchBook: e.target.value })}
-              />
-            </Form.Group>
+        <Row>
+          <Col md={8}>
+            <Row className="justify-content-center mt-5">
+              <Col xs={12} md={4} className="text-center">
+                <Form.Group>
+                  <Form.Control
+                    type="search"
+                    placeholder="Cerca un libro"
+                    value={this.state.searchQuery}
+                    onChange={(e) =>
+                      this.setState({ searchQuery: e.target.value })
+                    }
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="g-2 mt-3">
+              {this.props.books
+                .filter((b) =>
+                  b.title.toLowerCase().includes(this.state.searchQuery)
+                )
+                .map((b) => (
+                  <Col xs={12} md={4} key={b.asin}>
+                    <SingleBook
+                      book={b}
+                      selectedBook={this.state.selectedBook}
+                      changeSelectedBook={this.changeSelectedBook}
+                    />
+                  </Col>
+                ))}
+            </Row>
+          </Col>
+          <Col md={4}>
+            <CommentArea asin={this.state.selectedBook} />
           </Col>
         </Row>
-        <Row className="g-2 mt-3">
-          {this.props.books
-            .filter((libro) => // filtro l'array books
-              libro.title.toLowerCase().includes(this.state.searchBook)
-            )
-            .map((libro) => ( // itero su ogni elemento filtrato generando un col per ciascun libro
-              <Col xs={12} md={4} key={libro.asin} className='d-flex justify-content-center cardBook'>
-                <SingleBook book={libro} />
-                {/* <CommentArea/> */}
-              </Col>
-            ))}
-        </Row>
       </>
-    )
+    );
   }
 }
 

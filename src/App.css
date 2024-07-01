@@ -34,9 +34,25 @@
 }
 
 .cardImage {
-  height: 500px;
+  height: 100px;
   object-fit: cover;
 }
+
+.booksContainer {
+  max-height: calc(100vh - 300px);
+  position: relative;
+
+}
+
+.booksContainer .col-md-6:first-child {
+  overflow-y: auto;
+  max-height: calc(100vh - 300px);
+}
+
+/* 
+.titleCard {
+  font-size: 0.7rem !important;
+} */
 
 .alert {
   margin-top: 5rem;

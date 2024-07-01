@@ -1,57 +1,50 @@
 // Aggiungi un componente CommentArea alla fine di SingleBook. Quando l'utente cliccherà su un SingleBook (quindi quando la proprietà selected nel suo stato diventa true), i commenti dovranno apparire (suggerimento: short-circuit operator!).
 
-import { Component } from 'react';
-// import { ListGroup, Badge } from 'react-bootstrap'
+import React, { Component } from 'react';
 import CommentList from './CommentList';
-// import SingleComment from './SingleComment';
+import AddComment from './AddComment';
 
 class CommentArea extends Component {
-    state = {
-        commenti: []
-    };
+  state = {
+    comments: [],
+  };
 
-    fetchComments = () => {
-        const { bookId } = this.props;
-        fetch(`https://striveschool-api.herokuapp.com/api/comments/${bookId}`, {
+  componentDidUpdate = async (prevProps) => {
+    if (prevProps.asin !== this.props.asin && this.props.asin) {
+      try {
+        let response = await fetch(
+          'https://striveschool-api.herokuapp.com/api/comments/' + this.props.asin,
+          {
             headers: {
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjZiZjJmMjdjMjM5YzAwMTUyZjRiMzgiLCJpYXQiOjE3MTk0OTUzOTAsImV4cCI6MTcyMDcwNDk5MH0.xzzd2cZLLfCtZy4fwZMvEztRwbPDq6O8zdJ5MWbn70g"
-            }
-        })
-        .then(resp => {
-            if (resp.ok) {
-                return resp.json();
-            } else {
-                throw new Error("Errore nella chiamata");
-            }
-        })
-        .then(arrayCommenti => {
-            console.log(arrayCommenti);
-            this.setState({ commenti: arrayCommenti });
-        })
-        .catch(err => console.error("Errore!", err));
-    };
-
-    componentDidMount() {
-        this.fetchComments();
+              Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjgyYjg4MjJiNjYwYzAwMTUzZDhkZTgiLCJpYXQiOjE3MTk4NDI5NDYsImV4cCI6MTcyMTA1MjU0Nn0.pamYs8hQErgfJMBOC7uxgG6QhQEG6gVR4AAY_1FlZdc',
+            },
+          }
+        );
+        if (response.ok) {
+          let comments = await response.json();
+          this.setState({ comments: comments });
+        } else {
+          console.error('Errore nel recupero dei commenti');
+        }
+      } catch (error) {
+        console.error('Errore di fetch:', error);
+      }
     }
+  };
 
-   render() {
+  render() {
     return (
-      <>
-        <h5 className='mt-3 mb-2'>Recensioni:</h5>
-        {this.state.commenti.length === 0 ? ( // se array è vuoto
-          <p>Nessuna recensione disponibile.</p>
-        ) : (
-          <CommentList arrayCommenti={this.state.commenti} />
-        )}
-      </>
+      <div className="text-center">
+        <AddComment asin={this.props.asin} />
+        <CommentList commentsToShow={this.state.comments} />
+      </div>
     );
   }
 }
 
-  
-
 export default CommentArea;
+
+
 
 
 // https://striveschool-api.herokuapp.com/api/comments/
