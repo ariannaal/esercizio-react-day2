@@ -1,5 +1,5 @@
-import { Component } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Component } from 'react';
+import { Button, Form } from 'react-bootstrap';
 
 class AddComment extends Component {
   state = {
@@ -8,12 +8,21 @@ class AddComment extends Component {
       rate: 1,
       elementId: this.props.asin,
     },
+  };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.asin !== this.props.asin) {
+      this.setState({
+        comment: {
+          ...this.state.comment,
+          elementId: this.props.asin,
+        },
+      });
+    }
   }
 
-  
-
   sendComment = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       let response = await fetch(
         'https://striveschool-api.herokuapp.com/api/comments',
@@ -25,23 +34,26 @@ class AddComment extends Component {
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjgyYjg4MjJiNjYwYzAwMTUzZDhkZTgiLCJpYXQiOjE3MTk4NDI5NDYsImV4cCI6MTcyMTA1MjU0Nn0.pamYs8hQErgfJMBOC7uxgG6QhQEG6gVR4AAY_1FlZdc',
           },
         }
-      )
+      );
       if (response.ok) {
-        alert('Your review has been sent!')
+        alert('Review has been sent!');
         this.setState({
           comment: {
             comment: '',
             rate: 1,
             elementId: this.props.asin,
           },
-        })
+        });
       } else {
-        throw new Error('Something went wrong.')
+        const errorData = await response.json();
+        console.error('Errore nella risposta:', errorData);
+        throw new Error('Something went wrong');
       }
     } catch (error) {
-      alert(error)
+      console.error('Errore di rete:', error);
+      alert(error);
     }
-  }
+  };
 
   render() {
     return (
@@ -77,11 +89,11 @@ class AddComment extends Component {
                 })
               }
             >
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
             </Form.Control>
           </Form.Group>
           <Button variant="primary" type="submit">
@@ -89,8 +101,9 @@ class AddComment extends Component {
           </Button>
         </Form>
       </div>
-    )
+    );
   }
 }
 
-export default AddComment
+export default AddComment;
+
