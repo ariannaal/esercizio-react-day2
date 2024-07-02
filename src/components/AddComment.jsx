@@ -1,27 +1,41 @@
-import { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
-class AddComment extends Component {
-  state = {
-    comment: {
+const AddComment = ({asin}) => {
+  // state = {
+  //   comment: {
+  //     comment: '',
+  //     rate: 1,
+  //     elementId: this.props.asin,
+  //   },
+  // };
+
+  const [comment, setComment] = useState({
       comment: '',
       rate: 1,
-      elementId: this.props.asin,
-    },
-  };
+      elementId: asin,
+  })
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.asin !== this.props.asin) {
-      this.setState({
-        comment: {
-          ...this.state.comment,
-          elementId: this.props.asin,
-        },
-      });
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.asin !== this.props.asin) {
+  //     this.setState({
+  //       comment: {
+  //         ...this.state.comment,
+  //         elementId: this.props.asin,
+  //       },
+  //     });
+  //   }
+  // }
 
-  sendComment = async (e) => {
+  useEffect(() => {
+    setComment(() => ({ 
+      elementId: asin, // dovrascrivo cosi la proprietà elementId con il nuovo valore asin
+    }));
+  }, [asin]); // viene eseguito ogni volta che asin cambia
+  
+
+
+  const sendComment = async (e) => {
     e.preventDefault();
     try {
       let response = await fetch(
@@ -36,13 +50,11 @@ class AddComment extends Component {
         }
       );
       if (response.ok) {
-        alert('Review has been sent!');
-        this.setState({
-          comment: {
-            comment: '',
-            rate: 1,
-            elementId: this.props.asin,
-          },
+         alert('Review has been sent!');
+        setComment({
+          comment: '',
+          rate: 1,
+          elementId: asin,
         });
       } else {
         const errorData = await response.json();
@@ -55,37 +67,33 @@ class AddComment extends Component {
     }
   };
 
-  render() {
+  
+ 
     return (
       <div className="my-3">
-        <Form onSubmit={this.sendComment}>
+        <Form onSubmit={sendComment}>
           <Form.Group className="mb-2">
             <Form.Label>Review</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Write something"
-              value={this.state.comment.comment}
+              placeholder="Write something" 
+              value={comment.comment}
               onChange={(e) =>
-                this.setState({
-                  comment: {
-                    ...this.state.comment,
-                    comment: e.target.value,
-                  },
-                })
-              }
+                setComment({
+                ...comment,
+                comment: e.target.value,
+              })
+            }
             />
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Label>Rating</Form.Label>
             <Form.Control
               as="select"
-              value={this.state.comment.rate}
+              value={comment.rate}
               onChange={(e) =>
-                this.setState({
-                  comment: {
-                    ...this.state.comment,
-                    rate: e.target.value,
-                  },
+                setComment({
+                  ...comment, rate: e.target.value
                 })
               }
             >
@@ -103,7 +111,7 @@ class AddComment extends Component {
       </div>
     );
   }
-}
+
 
 export default AddComment;
 

@@ -14,10 +14,10 @@ const BookList = ({books}) => {
   // };
 
   const [searchQuery, setSearchQuery] = useState(''); 
-  const [selectedBook, setselectedBook] = useState(''); 
+  const [selectedBook, setSelectedBook] = useState(''); 
 
 const changeSelectedBook = (asin) => {
-    setselectedBook(asin);
+    setSelectedBook(asin);
   };
 
   
@@ -29,8 +29,7 @@ const changeSelectedBook = (asin) => {
                     type="search"
                     placeholder="Cerca un libro"
                     value={searchQuery}
-                    onChange={(e) =>
-                      this.setState({ searchQuery: e.target.value })
+                    onChange={(e) => ({searchQuery: e.target.value })
                     }
                   />
                 </Form.Group>
