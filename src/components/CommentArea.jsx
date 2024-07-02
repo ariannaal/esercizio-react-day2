@@ -11,7 +11,9 @@ class CommentArea extends Component {
   };
 
   componentDidUpdate = async (prevProps) => {
-    if (prevProps.asin !== this.props.asin && this.props.asin) {
+    console.log("this props", this.props.asin)
+     if (prevProps.asin !== this.props.asin) {
+      console.log("prevProps e this.props diverse, avvio la fetch")
       try {
         let response = await fetch(
           'https://striveschool-api.herokuapp.com/api/comments/' + this.props.asin,
@@ -20,6 +22,7 @@ class CommentArea extends Component {
               Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjgyYjg4MjJiNjYwYzAwMTUzZDhkZTgiLCJpYXQiOjE3MTk4NDI5NDYsImV4cCI6MTcyMTA1MjU0Nn0.pamYs8hQErgfJMBOC7uxgG6QhQEG6gVR4AAY_1FlZdc',
             },
           }
+          
         );
         if (response.ok) {
           let comments = await response.json();
