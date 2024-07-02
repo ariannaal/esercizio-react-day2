@@ -48,8 +48,14 @@ const CommentArea = ({ asin }) => {
       })
   }
 
+//   useEffect(() => {
+//  fetchComments(asin);
+// }, [asin]);
+
   useEffect(() => {
- fetchComments(asin);
+  if (asin) {
+    fetchComments(asin); 
+  }
 }, [asin]);
 
 return (
