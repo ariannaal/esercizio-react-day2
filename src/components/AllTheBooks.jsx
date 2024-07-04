@@ -1,6 +1,5 @@
 // Crea un componente AllTheBooks. Questo componente dovrà leggere un file .json fornito e mostrare le cover dei libri nella pagina (puoi utilizzare una Card di react-bootstrap).
 
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
