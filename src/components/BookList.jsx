@@ -33,22 +33,17 @@ const changeSelectedBook = (asin) => {
                     }
                   />
                 </Form.Group>
-<<<<<<< HEAD
-          <Col xs={4} >
-            <Row className="g-2 mt-3" >
-              {this.props.books
 =======
           <Col xs={4}>
             <Row className="g-2 mt-3">
               {books
->>>>>>> 9120a537f7c71b2830bb1261698c293023fa61d3
                 .filter((b) =>
                   b.title.toLowerCase().includes(searchQuery)
                 )
                 .map((b) => (
                   <Col xs={6} style={{ cursor: 'pointer', width: '200px' }}  key={b.asin} className="book-card">
                     <SingleBook
-                      className="card-book"
+                      data-testid="card-book"
                       role="article"
                       book={b}
                       selectedBook={selectedBook}
