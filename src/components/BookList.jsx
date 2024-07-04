@@ -33,15 +33,17 @@ class BookList extends Component {
                     }
                   />
                 </Form.Group>
-          <Col xs={4}>
-            <Row className="g-2 mt-3">
+          <Col xs={4} >
+            <Row className="g-2 mt-3" >
               {this.props.books
                 .filter((b) =>
                   b.title.toLowerCase().includes(this.state.searchQuery)
                 )
                 .map((b) => (
-                  <Col xs={6} style={{ cursor: 'pointer', width: '200px' }}  key={b.asin}>
+                  <Col xs={6} style={{ cursor: 'pointer', width: '200px' }}  key={b.asin} className="book-card">
                     <SingleBook
+                      
+                      role="article"
                       book={b}
                       selectedBook={this.state.selectedBook}
                       changeSelectedBook={this.changeSelectedBook}
