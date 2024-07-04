@@ -42,7 +42,7 @@ class BookList extends Component {
                 .map((b) => (
                   <Col xs={6} style={{ cursor: 'pointer', width: '200px' }}  key={b.asin} className="book-card">
                     <SingleBook
-                      
+                      className="card-book"
                       role="article"
                       book={b}
                       selectedBook={this.state.selectedBook}

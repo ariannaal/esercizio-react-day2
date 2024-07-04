@@ -5,7 +5,7 @@ import { Card, Button } from 'react-bootstrap';
 
 const SingleBook = ({ book, changeSelectedBook }) => {
   return (
-    <Card onClick={() => changeSelectedBook(book.asin)} style={{ cursor: 'pointer' }}>
+    <Card role="card" id='card-book' onClick={() => changeSelectedBook(book.asin)} style={{ cursor: 'pointer' }}>
       <Card.Img variant="top" src={book.img} />
       <Card.Body>
         <Card.Title>{book.title}</Card.Title>
